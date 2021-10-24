@@ -5,6 +5,18 @@ var artCarrito;
 var precioTot;
 var pago;
 
+
+function anadir() {
+    if (!nombre.value=="" || precio.value=="" || unidades.value=="" ){
+        precio.value=parseFloat.precio.value;
+        unidades.value=parseInt.unidades.value;
+        precioTot.value=precio.value*unidades.value;
+        artCarrito.value+=nombre.value + " ,";
+    }else
+        alert("Falta información del producto")
+}  
+
+
 function cargarPago (){
     if (pago.value=="Seleccione"){
         capaTarjeta.tarjeta.style.display="none";
@@ -19,12 +31,14 @@ function cargarPago (){
 }
 
 function inicializa(){
-    nombre = document.getElementsByName("nombre");
+    nombre = document.formulario.nombre
     precio = document.formulario.precio;
     unidades = document.formulario.unidades;
     artCarrito = document.formulario.artCarrito;
     precioTot = document.formulario.precioTot;
     pago = document.formulario.formaPago;
+
+  
 
 function eventos(){
     document.formulario.anadir.addEventListener("click",anadir);
@@ -33,6 +47,7 @@ function eventos(){
 
 window.onload=function(){
     inicializa();
+    anadir();
     cargarPago();
     eventos();
 }
