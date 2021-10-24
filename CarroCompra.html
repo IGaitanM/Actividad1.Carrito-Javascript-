@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarroCompra</title>
+    <script type="text-javascript" src="carritoJs.js"></script>
+</head>
+<body>
+    <fieldset>
+        <form name="formulario" >
+            Nombre artíclo <input type="text" name="nombre"><br></br>
+            Precio artículo <input type="text" name="precio"><br></br>
+            Unidades <input type="number" name="unidades"><br></br>
+            <input type="button" name="anadir" value="Añadir al carro"/> <br></br>
+
+            Artículos en el carrito <textarea style="resize: none;" rows="1" cols="50" name="totalArt"></textarea><br></br>
+            Precio total del carrito <input type="text" name="PrecTot"><br></br>
+
+            <select name="formaPago">
+                <option value="SEL">--Seleccione--</option>
+                <option value="TAR">Tarjeta</option>
+                <option value="EFE">Efectivo</option>
+            </select> <br></br>
+
+            <div id="capaTarjeta"   >
+                Titular tarjeta <input type="text" name="titular"><br></br>
+                Número tarjeta <input type="text" name="titular"><br></br>
+                CVV <input type="text" name="titular"><br></br>
+            </div> <br></br>
+            <div id="capaEfectivo"   >
+                Importe efectivo <input type="text" name="titular"><br></br>
+            </div>
+
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <input type="checkbox" name="aceptar" value="ACEPT" 
+                    checked/>Acepto las condiciones de compra <br></br>
+            <input type="button" value="imprimir"/>
+            <input type="reset" value="restablecer"/> <br></br>
+        </fieldset>
+
+    </form>
+    
+</body>
+</html>
