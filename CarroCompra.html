@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarroCompra</title>
-    <script type="text/javascript" src="CarritoJs.js"></script>
+    <script src="CarritoJs.js"></script>
 </head>
 <body>
     <fieldset>
         <form name="formulario" >
-            Nombre artíclo <input type="text" name="nombre"><br></br>
-            Precio artículo <input type="text" name="precio"><br></br>
+            Nombre artículo <input type="text" name="nombre"> <span id="errorNombre"></span><br/><br/>
+            Precio artículo <input type="text" name="precio"> <span id="errorPrecio"></span><br/><br/>
             Unidades <input type="number" name="unidades"><br></br>
             <input type="button" name="anadir" value="Añadir al carro"/> <br></br>
 
-            Artículos en el carrito <textarea style="resize: none;" rows="1" cols="50" name="artCarrito"></textarea><br></br>
+            Artículos en el carrito <textarea rows="1" cols="50" name="artCarrito"></textarea><br></br>
             Precio total del carrito <input type="text" name="precioTot"><br></br>
 
             <select name="formaPago">

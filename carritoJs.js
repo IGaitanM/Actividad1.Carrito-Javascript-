@@ -1,16 +1,16 @@
 var nombre;
+var errorNombre;
 var precio;
 var unidades;
-var botonAñadir;
 var artCarrito;
 var precioTot;
 var pago;
 
 function inicializa(){
     nombre = document.formulario.nombre;
+    errorNombre = document.getElementById("errorNombre");
     precio = document.formulario.precio;
     unidades = document.formulario.unidades;
-    botonAñadir = document.formulario.anadir;
     artCarrito = document.formulario.artCarrito;
     precioTot = document.formulario.precioTot;
     pago = document.formulario.formaPago;
@@ -18,19 +18,30 @@ function inicializa(){
   }
 
 function eventos(){
-    botonAñadir.addEventListener("click",anadir)
+    document.formulario.anadir.addEventListener("click",anadir);
 
 }    
 
 function anadir() {
-    if (!nombre.value=="" && !precio.value=="" && !unidades.value=="" ){
+    var sumaPrecio;
+    var sumaTotal=0;
+    if (!nombre.value==""){
         artCarrito.value += nombre.value + " ,";
-        precioTot.value += precio.value * unidades.value;
-        nombre.value = "";
-        precio.value = "";
-        unidades.value = 1;
-    }else
-        alert("Falta información del producto")
+    }else{
+        errorNombre.innerHTML= "Falta artículo";
+        nombre.focus();
+    }
+    if (!precio.value==""){
+        sumaPrecio= precio.value * unidades.value;
+    }else{
+        errorPrecio.innerHTML= "Falta precio";
+        precio.focus();
+    }
+    sumaTotal+= sumaPrecio;
+    precioTot.value= sumaTotal;
+
+
+   
 }  
 
 function cargarPago (){
