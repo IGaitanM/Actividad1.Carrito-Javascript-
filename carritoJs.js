@@ -9,6 +9,7 @@ var pago;
 function inicializa(){
     nombre = document.formulario.nombre;
     errorNombre = document.getElementById("errorNombre");
+    errorPrecio = document.getElementById("errorPrecio");
     precio = document.formulario.precio;
     unidades = document.formulario.unidades;
     artCarrito = document.formulario.artCarrito;
@@ -25,23 +26,25 @@ function eventos(){
 function anadir() {
     var sumaPrecio;
     var sumaTotal=0;
-    if (!nombre.value==""){
+    if (nombre.value!="" && precio.value!=""){
         artCarrito.value += nombre.value + " ,";
+        errorNombre.style.display="none";
     }else{
-        errorNombre.innerHTML= "Falta artículo";
+        errorNombre.style.display="inline";
         nombre.focus();
     }
-    if (!precio.value==""){
-        sumaPrecio= precio.value * unidades.value;
+    if (precio.value!="" && !isNaN(precio.value) ){
+        errorPrecio.style.display="none";
     }else{
-        errorPrecio.innerHTML= "Falta precio";
+        errorPrecio.style.display="inline";
         precio.focus();
     }
-    sumaTotal+= sumaPrecio;
-    precioTot.value= sumaTotal;
-
-
-   
+        sumaPrecio= precio.value*unidades.value;
+        sumaTotal+=sumaPrecio;
+        precioTot.value = sumaTotal;
+        nombre.value="";
+        precio.value="";
+        unidades.value=1;
 }  
 
 function cargarPago (){

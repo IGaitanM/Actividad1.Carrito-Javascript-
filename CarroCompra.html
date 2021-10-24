@@ -10,10 +10,10 @@
 <body>
     <fieldset>
         <form name="formulario" >
-            Nombre artículo <input type="text" name="nombre"> <span id="errorNombre"></span><br/><br/>
-            Precio artículo <input type="text" name="precio"> <span id="errorPrecio"></span><br/><br/>
+            Nombre artículo <input type="text" name="nombre"> <span id="errorNombre" name="errorNombre">Falta el nombre</span><br/><br/>
+            Precio artículo <input type="text" name="precio"> <span id="errorPrecio" name="errorPrecio">Falta el precio</span><br/><br/>
             Unidades <input type="number" name="unidades"><br></br>
-            <input type="button" name="anadir" value="Añadir al carro"/> <br></br>
+            <input type="button" name="anadir" value="Añadir al carro"> <br></br>
 
             Artículos en el carrito <textarea rows="1" cols="50" name="artCarrito"></textarea><br></br>
             Precio total del carrito <input type="text" name="precioTot"><br></br>
