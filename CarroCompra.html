@@ -13,23 +13,23 @@
             Nombre artículo <input type="text" name="nombre"> <span id="errorNombre" name="errorNombre">Falta el nombre</span><br/><br/>
             Precio artículo <input type="text" name="precio"> <span id="errorPrecio" name="errorPrecio">Falta el precio</span><br/><br/>
             Unidades <input type="number" name="unidades"><br></br>
-            <input type="button" name="anadir" value="Añadir al carro"> <br></br>
+            <input type="button" name="botonAnadir" id="botonAnadir" value="Añadir al carro"> <br></br>
 
             Artículos en el carrito <textarea rows="1" cols="50" name="artCarrito"></textarea><br></br>
             Precio total del carrito <input type="text" name="precioTot"><br></br>
 
-            <select name="formaPago">
+            <select name="formaPago" id="formaPago">
                 <option value="SEL">--Seleccione--</option>
                 <option value="TAR">Tarjeta</option>
                 <option value="EFE">Efectivo</option>
             </select> <br></br>
 
-            <div id="capaTarjeta"   >
+            <div id="capaTarjeta">
                 Titular tarjeta <input type="text" name="titular"><br></br>
                 Número tarjeta <input type="text" name="titular"><br></br>
                 CVV <input type="text" name="titular"><br></br>
             </div> <br></br>
-            <div id="capaEfectivo"   >
+            <div id="capaEfectivo">
                 Importe efectivo <input type="text" name="titular"><br></br>
             </div>
 
