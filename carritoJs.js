@@ -1,57 +1,98 @@
 var nombre;
 var errorNombre;
+var errorPrecio;
+var sumaPrecios;
+var sumaTotal=0;
 var precio;
 var unidades;
 var artCarrito;
 var precioTot;
+var botonAnadir;
 var pago;
+var capaTarjeta;
+var capaEfectivo;
 
-function inicializa(){
+
+function iniciaVariables(){
     nombre = document.formulario.nombre;
     errorNombre = document.getElementById("errorNombre");
+    errorNombre.style.display="none";
     errorPrecio = document.getElementById("errorPrecio");
+    errorPrecio.style.display="none";
     precio = document.formulario.precio;
     unidades = document.formulario.unidades;
     artCarrito = document.formulario.artCarrito;
     precioTot = document.formulario.precioTot;
+    botonAnadir = document.getElementById("botonAnadir");
     pago = document.formulario.formaPago;
+    capaTarjeta = document.getElementById("capaTarjeta");
+    capaEfectivo = document.getElementById("capaEfectivo");
+    capaTarjeta.style.display="none";
+    capaEfectivo.style.display="none";
 
   }
 
 function eventos(){
-    document.formulario.anadir.addEventListener("click",anadir);
+    botonAnadir.addEventListener("click",anadir);
+    pago.addEventListener("change", cargarPago);
 
 }    
 
 function anadir() {
-    var sumaPrecio;
-    var sumaTotal=0;
-    if (nombre.value!="" && precio.value!=""){
-        artCarrito.value += nombre.value + " ,";
-        errorNombre.style.display="none";
-    }else{
-        errorNombre.style.display="inline";
-        nombre.focus();
-    }
-    if (precio.value!="" && !isNaN(precio.value) ){
-        errorPrecio.style.display="none";
-    }else{
-        errorPrecio.style.display="inline";
-        precio.focus();
-    }
-        sumaPrecio= precio.value*unidades.value;
-        sumaTotal+=sumaPrecio;
+
+    validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito,precioTot,unidades);
+
+    if (!isNaN(precio.value)){
+        sumaPrecios;
+        sumaTotal;
+        sumaPrecios = precio.value*unidades.value;
+        sumaTotal += sumaPrecios;
         precioTot.value = sumaTotal;
         nombre.value="";
         precio.value="";
-        unidades.value=1;
+        unidades.value=1; 
+    }
+        
+           
 }  
 
+function validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito,precioTot){
+    
+    if (nombre.value=="" && precio.value==""){
+        errorNombre.style.display="inline";
+        errorPrecio.style.display="inline";
+        nombre.focus();
+
+    }if (precio.value=="" && nombre.value!=""){
+        errorPrecio.style.display="inline";
+        errorNombre.style.display="none";
+        precio.focus();
+
+    }if (nombre.value=="" && precio.value!=""){
+        errorPrecio.style.display="none";
+        errorNombre.style.display="inline";
+        precio.focus();
+    
+    }if (nombre.value!="" && precio.value!="" && (!isNaN(precio.value)) ){
+        errorPrecio.style.display="none";
+        artCarrito.value += nombre.value + " ,";
+                   
+    }
+    if (isNaN(precio.value)){
+        errorPrecio.style.display="inline";
+        errorPrecio.innerHTML = "Tipo de datos incorrecto";
+        precio.focus();
+        }
+        
+     
+}   
+
+
 function cargarPago (){
-    if (pago.value=="Seleccione"){
+    if (pago.value=="--Seleccione--"){
         capaTarjeta.style.display="none";
         capaEfectivo.style.display="none";
-    }else if (pago.value=="Tarjeta"){
+    }if (pago.value=="Tarjeta"){
         capaTarjeta.style.display="block";
         capaEfectivo.style.display="none";
     }else{
@@ -62,11 +103,7 @@ function cargarPago (){
 
 
 window.onload=function(){
-    inicializa();
-    anadir();
-    cargarPago();
+    iniciaVariables();
     eventos();
+    
 }
-
-
-
