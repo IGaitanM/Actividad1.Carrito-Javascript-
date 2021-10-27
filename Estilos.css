@@ -1,0 +1,77 @@
+*{
+	box-sizing:content-box;
+	
+}
+
+body{
+    background: #181818;
+    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(14, 4, 4, 0.8)), url(fondo.jpg);
+    font-weight: bold;
+    padding: 0 1.5em;  
+    place-items: center center;
+    font-family:'Poppins',sans sans-serif;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+
+form{
+	width:300px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:rgb(218, 213, 213)
+	
+}
+form input[type="text"], 
+form select{
+	width:250px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;   
+}
+form input[type="number"]{
+    width:50px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+    
+}
+input[type="button"]{
+   
+	border:none;
+	border-radius: 15px;
+	display: inline;
+	font-weight: bold;
+	cursor: pointer;
+	opacity: 1;
+	outline: 2px solid #f6f6f6;
+	outline-offset: 2px;
+	
+	
+}
+#restablecer{
+	position: relative;
+	left:10px;
+}
+
+input[type="button"]:hover:enabled{
+    transition: all .6s ease;
+	background-color: rgba(0, 0, 0, 0.685);
+	outline: 2px solid rgba(0, 0, 0, 0.685);
+	color:white;
+
+}
+span {
+    color: rgba(0,0,0,0.4);
+    opacity: 1;
+    font-weight: bold;
+    transition: all .5s ease;
+}

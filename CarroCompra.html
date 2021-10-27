@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarroCompra</title>
     <script src="CarritoJs.js"></script>
+    <link rel="stylesheet" href="Estilos.css">
 </head>
 <body>
     <fieldset>
@@ -15,7 +16,7 @@
             Unidades <input type="number" name="unidades"><br></br>
             <input type="button" name="botonAnadir" id="botonAnadir" value="Añadir al carro"> <br></br>
 
-            Artículos en el carrito <textarea rows="1" cols="50" name="artCarrito"></textarea><br></br>
+            Artículos en el carrito <input type="text" name="artCarrito"> <br></br>
             Precio total del carrito <input type="text" name="precioTot"><br></br>
 
             <select name="formaPago" id="formaPago">
@@ -34,10 +35,8 @@
             </div>
 
             <br></br>
-            <br></br>
-            <br></br>
 
-            <input type="checkbox" name="aceptar" value="ACEPT" >Acepto las condiciones de compra <br></br>
+            <input type="checkbox" name="aceptar" value="ACEPT" checked="false">Acepto las condiciones de compra <br></br>
             <input type="button" value="imprimir" id="imprimir" disabled="true"/>
             <input type="button" value="restablecer" id="restablecer"/> <br></br>
         </fieldset>
