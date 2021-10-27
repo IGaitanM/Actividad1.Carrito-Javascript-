@@ -11,6 +11,8 @@ var botonAnadir;
 var pago;
 var capaTarjeta;
 var capaEfectivo;
+var imprimir;
+var restablecer;
 
 
 function iniciaVariables(){
@@ -29,18 +31,33 @@ function iniciaVariables(){
     capaEfectivo = document.getElementById("capaEfectivo");
     capaTarjeta.style.display="none";
     capaEfectivo.style.display="none";
+    imprimir = document.getElementById("imprimir");
+    restablecer = document.getElementById("restablecer");
 
   }
 
 function eventos(){
     botonAnadir.addEventListener("click",anadir);
     pago.addEventListener("change", cargarPago);
+    restablecer.addEventListener("click", rest);
+    
 
 }    
 
+function rest (){
+    nombre.value="";
+    precio.value="";
+    unidades.value=1;
+    artCarrito.value="";
+    precioTot.value="";
+    pago.value="SEL";
+    capaTarjeta.style.display="none";
+    capaEfectivo.style.display="none";
+}
+
 function anadir() {
 
-    validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito,precioTot,unidades);
+    validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito);
 
     if (!isNaN(precio.value)){
         sumaPrecios;
@@ -56,7 +73,7 @@ function anadir() {
            
 }  
 
-function validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito,precioTot){
+function validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito){
     
     if (nombre.value=="" && precio.value==""){
         errorNombre.style.display="inline";
@@ -71,10 +88,12 @@ function validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito,precioTot
     }if (nombre.value=="" && precio.value!=""){
         errorPrecio.style.display="none";
         errorNombre.style.display="inline";
+        precio.value=0;
         precio.focus();
     
     }if (nombre.value!="" && precio.value!="" && (!isNaN(precio.value)) ){
         errorPrecio.style.display="none";
+        errorNombre.style.display="none";
         artCarrito.value += nombre.value + " ,";
                    
     }
@@ -89,13 +108,13 @@ function validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito,precioTot
 
 
 function cargarPago (){
-    if (pago.value=="--Seleccione--"){
+    if (pago.value=="SEL"){
         capaTarjeta.style.display="none";
         capaEfectivo.style.display="none";
-    }if (pago.value=="Tarjeta"){
+    }if (pago.value=="TAR"){
         capaTarjeta.style.display="block";
         capaEfectivo.style.display="none";
-    }else{
+    }if (pago.value=="EFE"){
         capaTarjeta.style.display="none";
         capaEfectivo.style.display="block";
     } 
