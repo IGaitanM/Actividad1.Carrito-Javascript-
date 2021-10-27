@@ -11,6 +11,7 @@ var botonAnadir;
 var pago;
 var capaTarjeta;
 var capaEfectivo;
+var aceptar;
 var imprimir;
 var restablecer;
 
@@ -33,6 +34,8 @@ function iniciaVariables(){
     capaEfectivo.style.display="none";
     imprimir = document.getElementById("imprimir");
     restablecer = document.getElementById("restablecer");
+    aceptar = document.formulario.aceptar;
+
 
   }
 
@@ -40,9 +43,28 @@ function eventos(){
     botonAnadir.addEventListener("click",anadir);
     pago.addEventListener("change", cargarPago);
     restablecer.addEventListener("click", rest);
+    aceptar.addEventListener("change", check);
+    imprimir.addEventListener("click" , print);
     
 
 }    
+
+function print(){
+    if (pago.value=="Seleccione")
+        alert("Por favor seleccione un método de pago");
+    else
+    alert("Los artículos de mi carrito son: " + artCarrito.value +"\n El precio total es: "
+    + precioTot.value +"€" + "\n Forma de pago: "+ pago.value);
+}
+
+
+function check(){
+    if (aceptar.checked==true)
+        imprimir.disabled = false;
+    else 
+        imprimir.disabled = true;
+
+}
 
 function rest (){
     nombre.value="";
@@ -57,7 +79,7 @@ function rest (){
 
 function anadir() {
 
-    validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito);
+    validaArticulos();
 
     if (!isNaN(precio.value)){
         sumaPrecios;
@@ -73,25 +95,29 @@ function anadir() {
            
 }  
 
-function validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito){
+function validaArticulos(){
     
     if (nombre.value=="" && precio.value==""){
         errorNombre.style.display="inline";
+        errorPrecio.innerHTML = "falta el precio";
         errorPrecio.style.display="inline";
         nombre.focus();
 
     }if (precio.value=="" && nombre.value!=""){
         errorPrecio.style.display="inline";
+        errorPrecio.innerHTML = "falta el precio";
         errorNombre.style.display="none";
         precio.focus();
 
-    }if (nombre.value=="" && precio.value!=""){
-        errorPrecio.style.display="none";
+    }if (nombre.value=="" && isNaN(precio.value)){
+        errorPrecio.innerHTML = "Tipo de datos incorrecto";
+        errorPrecio.style.display="inline";
         errorNombre.style.display="inline";
         precio.value=0;
         precio.focus();
-    
-    }if (nombre.value!="" && precio.value!="" && (!isNaN(precio.value)) ){
+
+       
+    }if (nombre.value!="" && precio.value!="" && !isNaN(precio.value) ){
         errorPrecio.style.display="none";
         errorNombre.style.display="none";
         artCarrito.value += nombre.value + " ,";
@@ -108,13 +134,13 @@ function validaNombre(nombre,precio,errorNombre,errorPrecio,artCarrito){
 
 
 function cargarPago (){
-    if (pago.value=="SEL"){
+    if (pago.value=="Seleccione"){
         capaTarjeta.style.display="none";
         capaEfectivo.style.display="none";
-    }if (pago.value=="TAR"){
+    }if (pago.value=="Tarjeta"){
         capaTarjeta.style.display="block";
         capaEfectivo.style.display="none";
-    }if (pago.value=="EFE"){
+    }if (pago.value=="Efectivo"){
         capaTarjeta.style.display="none";
         capaEfectivo.style.display="block";
     } 
